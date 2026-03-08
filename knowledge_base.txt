@@ -1,0 +1,91 @@
+knowledge_base/
+   bmi.json
+   diet_guidelines.json
+   calorie_rules.json
+   nutrient_requirements.json
+-----------------bmi_classification.json------------------------------------------------------------
+{
+  "bmi_categories": [
+    {
+      "category": "Underweight",
+      "min": 0,
+      "max": 18.5,
+      "recommendation": "Increase caloric intake and balanced nutrition"
+    },
+    {
+      "category": "Normal",
+      "min": 18.5,
+      "max": 24.9,
+      "recommendation": "Maintain balanced diet and physical activity"
+    },
+    {
+      "category": "Overweight",
+      "min": 25,
+      "max": 29.9,
+      "recommendation": "Reduce calorie intake and increase physical activity"
+    },
+    {
+      "category": "Obese",
+      "min": 30,
+      "max": 100,
+      "recommendation": "Adopt calorie deficit diet and medical consultation"
+    }
+  ]
+}
+
+-------------------calorie_rules.json--------------------------------------------------------------------
+
+{
+  "weight_loss_rules": {
+    "standard_deficit": 500,
+    "expected_weight_loss_per_week": "0.5 kg"
+  },
+  "weight_gain_rules": {
+    "calorie_surplus": 500,
+    "expected_weight_gain_per_week": "0.5 kg"
+  }
+}
+
+-----------------diet_guidelines.JSON---------------------------------------------------
+
+{
+  "who_guidelines": {
+    "fruit_vegetables_per_day": "400g",
+    "free_sugar_limit": "10% of total energy",
+    "fat_limit": "30% of total energy",
+    "salt_limit": "5g per day",
+    "recommendations": [
+      "Eat a variety of foods",
+      "Reduce sugar intake",
+      "Limit salt consumption",
+      "Replace saturated fats with unsaturated fats"
+    ]
+  }
+}
+----------------nutrient_recommendatioin.JSON------------------------------------------------
+{
+  "daily_nutrients": {
+    "adult_male": {
+      "calories": 2500,
+      "protein_g": 56,
+      "carbohydrates_percent": "45-65%",
+      "fat_percent": "20-35%"
+    },
+    "adult_female": {
+      "calories": 2000,
+      "protein_g": 46,
+      "carbohydrates_percent": "45-65%",
+      "fat_percent": "20-35%"
+    }
+  }
+}
+----------------bmi.JSON-------------------------------------------------------------------------
+{
+  "bmi_categories": [
+    {"category": "Underweight", "min": 0, "max": 18.5},
+    {"category": "Normal", "min": 18.5, "max": 24.9},
+    {"category": "Overweight", "min": 25, "max": 29.9},
+    {"category": "Obese", "min": 30, "max": 100}
+  ]
+}
+-------------------------------------------------------------------------------------------------

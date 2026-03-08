@@ -1,0 +1,134 @@
+{
+    "Weight Loss": [
+        {
+            "day": "Mon",
+            "bf": "Boiled Sweet Potato & Tea",
+            "lunch": " Ugali & Managu",
+            "supper": "Boiled Beans & Cabbage"
+        },
+        {
+            "day": "Tue",
+            "bf": "Nduma (Arrowroot) & Coffee",
+            "lunch": "Githeri (Bean heavy)",
+            "supper": "Grilled Tilapia & Sukuma"
+        },
+        {
+            "day": "Wed",
+            "bf": "Oatmeal & Banana",
+            "lunch": "Brown Rice & Ndengu",
+            "supper": "Lean Beef & Terere"
+        },
+        {
+            "day": "Thu",
+            "bf": "2 Boiled Eggs & Fruit",
+            "lunch": "Mukimo (Pumpkin leaves)",
+            "supper": "Chicken Soup & Veggies"
+        },
+        {
+            "day": "Fri",
+            "bf": "Cassava & Herbal Tea",
+            "lunch": "Stewed Omena & Managu",
+            "supper": "Veggie Soup & small Rice"
+        },
+        {
+            "day": "Sat",
+            "bf": "Wholemeal Bread & Avocado",
+            "lunch": "Liver & Spinach",
+            "supper": "Boiled Pumpkin & Milk"
+        },
+        {
+            "day": "Sun",
+            "bf": "Fruit Smoothie",
+            "lunch": "Roasted Chicken & Kachumbari",
+            "supper": "Yellow Beans & Sagaa"
+        }
+    ],
+    "Muscle Gain": [
+        {
+            "day": "Mon",
+            "bf": "3 Eggs, Toast & Milk",
+            "lunch": "Ugali, Beef Stew & Terere",
+            "supper": "Rice & Beans & Avocado"
+        },
+        {
+            "day": "Tue",
+            "bf": "Uji with Groundnuts",
+            "lunch": "Chicken, Mukimo & Cabbage",
+            "supper": "Fish Stew & Ugali"
+        },
+        {
+            "day": "Wed",
+            "bf": "Oatmeal & Peanut Butter",
+            "lunch": "Minced Meat, Rice & Sukuma",
+            "supper": "Githeri & Avocado"
+        },
+        {
+            "day": "Thu",
+            "bf": "Pancakes & Mursik",
+            "lunch": "Nyama Choma & Ugali",
+            "supper": "Omena & Brown Ugali"
+        },
+        {
+            "day": "Fri",
+            "bf": "Sausages, Eggs & Cocoa",
+            "lunch": "Beef Pilau",
+            "supper": "Beans & Chapati"
+        },
+        {
+            "day": "Sat",
+            "bf": "Nduma & Fried Eggs",
+            "lunch": "Chicken Biryani",
+            "supper": "Liver stew & Ugali"
+        },
+        {
+            "day": "Sun",
+            "bf": "Omelet & Toast",
+            "lunch": "Beef Stew, Chapati & Managu",
+            "supper": "Ndengu & Rice"
+        }
+    ],
+    "Maintenance": [
+        {
+            "day": "Mon",
+            "bf": "Tea & Boiled Maize",
+            "lunch": "Ugali, Fish & Sukuma",
+            "supper": "Rice & Ndengu"
+        },
+        {
+            "day": "Tue",
+            "bf": "Uji & Bread",
+            "lunch": "Githeri & Avocado",
+            "supper": "Beef Stew & Rice"
+        },
+        {
+            "day": "Wed",
+            "bf": "Eggs & Fruit",
+            "lunch": "Mukimo & Beef",
+            "supper": "Fish Stew & Veggies"
+        },
+        {
+            "day": "Thu",
+            "bf": "Nduma & Milk",
+            "lunch": "Rice, Beans & Cabbage",
+            "supper": "Ugali & Omena"
+        },
+        {
+            "day": "Fri",
+            "bf": "Sweet Potato & Tea",
+            "lunch": "Chicken & Rice",
+            "supper": "Githeri"
+        },
+        {
+            "day": "Sat",
+            "bf": "Bread & Avocado",
+            "lunch": "Beef Stew & Ugali",
+            "supper": "Rice & Veggies"
+        },
+        {
+            "day": "Sun",
+            "bf": "Pancakes & Tea",
+            "lunch": "Pilau & Kachumbari",
+            "supper": "Ugali & Managu"
+        }
+    ]
+}

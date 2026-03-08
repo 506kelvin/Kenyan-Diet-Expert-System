@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin — Knowledge Base</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --cream: #FAF7F2;
+            --warm-white: #FDF9F4;
+            --bark: #3D2B1F;
+            --moss: #4A6741;
+            --sage: #7A9E72;
+            --terracotta: #C4613A;
+            --gold: #C9993A;
+            --light-sage: #E8F0E6;
+            --light-terra: #FAF0EB;
+            --light-gold: #FBF6EC;
+            --border: rgba(61, 43, 31, 0.12);
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: var(--cream);
+            min-height: 100vh;
+            padding: 3rem 1.5rem 4rem;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: -10%;
+            right: -5%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(ellipse, rgba(122,158,114,0.13) 0%, transparent 70%);
+            border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%;
+            pointer-events: none;
+            animation: drift 12s ease-in-out infinite alternate;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            bottom: -10%;
+            left: -5%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(ellipse, rgba(196,97,58,0.07) 0%, transparent 70%);
+            border-radius: 40% 60% 30% 70% / 60% 40% 50% 50%;
+            pointer-events: none;
+            animation: drift 15s ease-in-out infinite alternate-reverse;
+        }
+
+        @keyframes drift {
+            from { transform: translate(0,0) rotate(0deg); }
+            to   { transform: translate(20px,-20px) rotate(10deg); }
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(18px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-10px); }
+            to   { opacity: 1; transform: translateX(0); }
+        }
+
+        .page-wrap {
+            max-width: 860px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ── Header ── */
+        .header {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 2.75rem;
+            animation: fadeUp 0.6s ease both;
+        }
+
+        .header-tag {
+            display: inline-block;
+            font-size: 0.68rem;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--terracotta);
+            background: var(--light-terra);
+            padding: 0.3rem 0.9rem;
+            border-radius: 2rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            color: var(--bark);
+            line-height: 1.15;
+        }
+
+        .header h1 em {
+            color: var(--terracotta);
+            font-style: italic;
+        }
+
+        .header-sub {
+            margin-top: 0.45rem;
+            font-size: 0.87rem;
+            color: rgba(61,43,31,0.5);
+            font-weight: 300;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.7rem 1.3rem;
+            background: transparent;
+            color: var(--bark);
+            text-decoration: none;
+            border: 1.5px solid var(--border);
+            border-radius: 12px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.83rem;
+            font-weight: 500;
+            white-space: nowrap;
+            transition: all 0.2s;
+            flex-shrink: 0;
+        }
+
+        .back-btn svg { transition: transform 0.2s; }
+
+        .back-btn:hover {
+            background: var(--bark);
+            color: var(--cream);
+            border-color: var(--bark);
+            transform: translateY(-1px);
+            box-shadow: 0 6px 18px rgba(61,43,31,0.18);
+        }
+
+        .back-btn:hover svg { transform: translateX(-3px); }
+
+        /* ── Goal Section ── */
+        .goal-section {
+            margin-bottom: 2.5rem;
+            animation: fadeUp 0.6s ease both;
+        }
+
+        .goal-section:nth-child(2) { animation-delay: 0.1s; }
+        .goal-section:nth-child(3) { animation-delay: 0.2s; }
+        .goal-section:nth-child(4) { animation-delay: 0.3s; }
+
+        .goal-header {
+            display: flex;
+            align-items: center;
+            gap: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        .goal-badge {
+            height: 32px;
+            padding: 0 1rem;
+            border-radius: 2rem;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .goal-badge.loss    { background: var(--light-terra); color: var(--terracotta); }
+        .goal-badge.gain    { background: var(--light-sage);  color: var(--moss); }
+        .goal-badge.maint   { background: var(--light-gold);  color: var(--gold); }
+        .goal-badge.default { background: rgba(61,43,31,0.07); color: var(--bark); }
+
+        .goal-divider {
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        .day-count {
+            font-size: 0.75rem;
+            color: rgba(61,43,31,0.4);
+            font-weight: 400;
+            white-space: nowrap;
+        }
+
+        /* ── Meal Row Card ── */
+        .meal-card {
+            background: var(--warm-white);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            padding: 1.2rem 1.4rem;
+            margin-bottom: 0.75rem;
+            display: grid;
+            grid-template-columns: 90px 1fr 1fr 1fr auto;
+            gap: 0.85rem;
+            align-items: center;
+            transition: box-shadow 0.2s, transform 0.2s;
+            animation: slideIn 0.4s ease both;
+        }
+
+        .meal-card:hover {
+            box-shadow: 0 4px 20px rgba(61,43,31,0.08);
+            transform: translateY(-1px);
+        }
+
+        .day-label {
+            font-family: 'Playfair Display', serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--bark);
+            white-space: nowrap;
+        }
+
+        .meal-field {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        .meal-field label {
+            font-size: 0.63rem;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: rgba(61,43,31,0.4);
+        }
+
+        .meal-field.bf    label { color: rgba(201,153,58,0.8); }
+        .meal-field.lunch label { color: rgba(74,103,65,0.8); }
+        .meal-field.sup   label { color: rgba(196,97,58,0.8); }
+
+        .meal-field input[type="text"] {
+            width: 100%;
+            padding: 0.6rem 0.85rem;
+            border: 1.5px solid var(--border);
+            border-radius: 10px;
+            background: var(--cream);
+            color: var(--bark);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 400;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
+        }
+
+        .meal-field input:focus {
+            border-color: var(--sage);
+            box-shadow: 0 0 0 3px rgba(122,158,114,0.15);
+            background: white;
+        }
+
+        .meal-field input:hover {
+            border-color: rgba(61,43,31,0.25);
+        }
+
+        .save-btn {
+            padding: 0.6rem 1.1rem;
+            background: var(--bark);
+            color: var(--cream);
+            border: none;
+            border-radius: 10px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 500;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: transform 0.15s, box-shadow 0.15s, background-color 0.15s;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .save-btn:hover {
+            background-color: var(--moss);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 14px rgba(61,43,31,0.2);
+        }
+
+        .save-btn:active {
+            transform: translateY(0);
+            box-shadow: none;
+        }
+
+        /* Flash feedback */
+        .save-btn.saved {
+            background: var(--moss);
+        }
+
+        /* ── Flash messages ── */
+        .flash-bar {
+            padding: 0.85rem 1.2rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            font-size: 0.88rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            animation: fadeUp 0.4s ease both;
+        }
+
+        .flash-bar.success { background: var(--light-sage); color: var(--moss); border: 1px solid rgba(74,103,65,0.2); }
+        .flash-bar.error   { background: var(--light-terra); color: var(--terracotta); border: 1px solid rgba(196,97,58,0.2); }
+
+        /* ── Responsive ── */
+        @media (max-width: 700px) {
+            .meal-card {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: auto auto auto;
+            }
+
+            .day-label { grid-column: 1 / -1; }
+            .save-btn  { grid-column: 1 / -1; justify-content: center; }
+
+            .header { flex-direction: column; align-items: flex-start; }
+        }
+
+        @media (max-width: 480px) {
+            .meal-card { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrap">
+
+        <!-- Header -->
+        <div class="header">
+            <div class="header-left">
+                <div class="header-tag">⚙️ Admin Panel</div>
+                <h1>Knowledge <em>Base</em> Editor</h1>
+                <p class="header-sub">Edit daily meal plans across all goal categories</p>
+            </div>
+            <a href="/" class="back-btn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+                Back to Calculator
+            </a>
+        </div>
+
+        <!-- Flash messages (Jinja2) -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                <div class="flash-bar {{ category }}">
+                    {% if category == 'success' %}✓{% else %}!{% endif %}
+                    {{ message }}
+                </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <!-- Goal sections -->
+        {% for goal, days in all_meals.items() %}
+        <div class="goal-section">
+            <div class="goal-header">
+                {% set goal_lower = goal | lower %}
+                {% if 'loss' in goal_lower %}
+                    <div class="goal-badge loss">🔥 {{ goal }}</div>
+                {% elif 'gain' in goal_lower or 'muscle' in goal_lower %}
+                    <div class="goal-badge gain">💪 {{ goal }}</div>
+                {% elif 'maint' in goal_lower %}
+                    <div class="goal-badge maint">⚖️ {{ goal }}</div>
+                {% else %}
+                    <div class="goal-badge default">{{ goal }}</div>
+                {% endif %}
+                <div class="goal-divider"></div>
+                <span class="day-count">{{ days | length }} day{% if days | length != 1 %}s{% endif %}</span>
+            </div>
+
+            {% for day in days %}
+            <form action="/update_meal" method="POST">
+                <input type="hidden" name="goal" value="{{ goal }}">
+                <input type="hidden" name="day_index" value="{{ loop.index0 }}">
+
+                <div class="meal-card" style="animation-delay: {{ (loop.index0 * 0.05) | round(2) }}s">
+                    <div class="day-label">{{ day.day }}</div>
+
+                    <div class="meal-field bf">
+                        <label for="bf_{{ goal }}_{{ loop.index0 }}">Breakfast</label>
+                        <input type="text" id="bf_{{ goal }}_{{ loop.index0 }}" name="bf" value="{{ day.bf }}" placeholder="Breakfast…">
+                    </div>
+
+                    <div class="meal-field lunch">
+                        <label for="lunch_{{ goal }}_{{ loop.index0 }}">Lunch</label>
+                        <input type="text" id="lunch_{{ goal }}_{{ loop.index0 }}" name="lunch" value="{{ day.lunch }}" placeholder="Lunch…">
+                    </div>
+
+                    <div class="meal-field sup">
+                        <label for="sup_{{ goal }}_{{ loop.index0 }}">Supper</label>
+                        <input type="text" id="sup_{{ goal }}_{{ loop.index0 }}" name="supper" value="{{ day.supper }}" placeholder="Supper…">
+                    </div>
+
+                    <button type="submit" class="save-btn" onclick="flashSave(this)">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/>
+                            <polyline points="17 21 17 13 7 13 7 21"/>
+                            <polyline points="7 3 7 8 15 8"/>
+                        </svg>
+                        Save
+                    </button>
+                </div>
+            </form>
+            {% endfor %}
+        </div>
+        {% endfor %}
+
+    </div>
+
+    <script>
+        function flashSave(btn) {
+            // Visual feedback on save click
+            const original = btn.innerHTML;
+            btn.innerHTML = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Saved`;
+            btn.classList.add('saved');
+            // The form will submit, so this is just cosmetic while navigating away
+        }
+    </script>
+</body>
+</html>
