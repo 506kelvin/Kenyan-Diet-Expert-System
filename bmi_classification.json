@@ -1,0 +1,28 @@
+{
+  "bmi_categories": [
+    {
+      "category": "Underweight",
+      "min": 0,
+      "max": 18.5,
+      "recommendation": "Increase caloric intake and balanced nutrition"
+    },
+    {
+      "category": "Normal",
+      "min": 18.5,
+      "max": 24.9,
+      "recommendation": "Maintain balanced diet and physical activity"
+    },
+    {
+      "category": "Overweight",
+      "min": 25,
+      "max": 29.9,
+      "recommendation": "Reduce calorie intake and increase physical activity"
+    },
+    {
+      "category": "Obese",
+      "min": 30,
+      "max": 100,
+      "recommendation": "Adopt calorie deficit diet and medical consultation"
+    }
+  ]
+}
