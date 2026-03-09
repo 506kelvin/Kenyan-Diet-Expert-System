@@ -44,14 +44,31 @@ def result():
         weekly_meals = rules.get_weekly_plan(goal)
         health_tips = rules.health_rules(high_bp, diabetes)
 
-        # 4. Response Generation
+        # 4. Safety Guardrail Logic
+        warning_message = None
+        
+        # If user is underweight but wants to loose weight, override the goal
+        if bmi_category == "Underweight" and goal == "Weight Loss":
+            goal = "Maintenance" # Force to maintenance for safety
+            warning_message = "Notice: Your BMI indicates you are underweight. We have adjusted your plan to 'Maintenance' to ensure your health safety."
+        # If user is obese but wants to gain muscle, prioritize weight management 
+        if bmi_category == 'Obese' and goal == "Muscle Gain":
+            warning_message = "Note: While focusing on muscle, ensure you prioritize low-calorie, high-protein Kenyan staples like Omena and Greens"
+
+        # Apply calorie adjustments
+        goal_map = {"Weight Loss": -500, "Muscle Gain": 350, "Maintenance": 0}
+        calories = int(tdee + goal_map.get(goal, 0))
+
+        # 5. Response Generation
         return render_template("result.html", 
                                bmi=round(bmi, 1), 
                                bmi_category=bmi_category,
                                calories=calories,
                                diet=diet,
                                weekly_meals=weekly_meals,
-                               health_tips=health_tips)
+                               health_tips=health_tips,
+                               warning_message=warning_message
+                               )
     except Exception as e:
         return f"Calculation Error: {e}"
     

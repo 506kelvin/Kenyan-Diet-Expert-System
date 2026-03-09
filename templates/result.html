@@ -454,6 +454,12 @@
             <h1>Your <em>Personal</em><br>Nutrition Plan</h1>
             <p>Based on your profile and health data</p>
         </div>
+        <!-- safety guardrail -->
+    {% if warning_message %}
+    </div style="background-color: #fff3cd; color: #856404; padding: 15px; border-radius: 8px; border: 1px solid #ffeeba; margin-bottom: 20px; font-weight: bold;">
+        {{ warning_message }}
+    </div>
+    {% endif %}
 
         <!-- BMI Hero -->
         <div class="bmi-hero" id="bmiHero">
